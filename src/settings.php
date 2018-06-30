@@ -15,5 +15,10 @@ return [
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+
+        // Security
+        'Security' => [
+            'Salt' => 'iBSygv04JGHMkSzbWTV3udvqBRNh0zmf'
+        ]
     ],
 ];
