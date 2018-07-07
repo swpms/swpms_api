@@ -4,11 +4,27 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 // Routes
-
-$app->get('/[{name}]', function (Request $request, Response $response, array $args) {
+$app->get('/user/login', function (Request $request, Response $response, array $args) {
     // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
-
+    if($request->is('post')){
+        $username = $request->getParam('username');
+        $password = $request->getParam('password');
+        if($dbUser->exists($username, $passowrd)){
+            $payload = [
+                'iss' => 'swpms.api',
+                'expt' => strtitime('+2 hours'),
+                'data' => [
+                    'username' => $username,
+                    'password' => $passowrd
+                ]
+            ];
+            $token = JWT::encode($payload, $scretKey, $algorithm);
+            return $response->withJson([
+                'status' => 'OK',
+                'token' => $token
+            ]);
+        }
+    }
     // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
+    return $this->withJson(['status' => 'NG', 'token' => '']);
 });
