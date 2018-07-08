@@ -1,10 +1,9 @@
 <?php
 // Application middleware
-$app->add(new Tuupola\Middleware\JwtAuthentication([
-    "path"   => ["/api"],
-    "ignore" => ["/api/token"],
-    "header" => "X-Token",
-    "secret" => $app->getContainer()
-                    ->get('settings')
-                    ->get('Security')['Salt']
+$app->add(new \App\Middleware\JwtAuthentication([
+    'ignore' => [
+        '/api/v1/token',
+        '/user/login'
+    ],
+    'secret' => $container->security->salt
 ]));

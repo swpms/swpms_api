@@ -17,8 +17,25 @@ return [
         ],
 
         // Security
-        'Security' => [
-            'Salt' => 'iBSygv04JGHMkSzbWTV3udvqBRNh0zmf'
+        'security' => [
+            'algorithm' => 'HS256',
+            'salt'      => 'iBSygv04JGHMkSzbWTV3udvqBRNh0zmf'
+        ],
+        // Database connection settings
+        "db"      => [
+            'driver'    => 'mysql',
+            'host'      => 'localhost',
+            'database'  => 'swpms_api',
+            'username'  => 'root',
+            'password'  => '',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_general_ci',
+            'prefix'    => ''
+        ],
+        "db_test" => [
+            'driver'   => 'sqlite',
+            'database' => __DIR__ . '/tmp/testing.sqlite',
+            'prefix'   => ''
         ]
     ],
 ];
