@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phpunit
+    colors="true"
+    bootstrap="./tests/bootstrap.php">
+    <testsuites>
+        <testsuite name="SlimIntegration">
+            <directory suffix="Test.php">./tests/TestCase/Integration/</directory>
+        </testsuite>
+    </testsuites>
+    
+    <listeners>
+        <listener
+            class="\Tests\Helper\Fixture\FixtureInjector"
+            file="tests/Helper/Fixture/FixtureInjector.php">
+            <arguments>
+                <object class="\Tests\Helper\Fixture\FixtureManager"/>
+            </arguments>
+        </listener>
+    </listeners>
+</phpunit>

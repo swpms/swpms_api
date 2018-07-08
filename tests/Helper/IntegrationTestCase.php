@@ -1,11 +1,11 @@
 <?php
-
-namespace Tests\Functional;
+namespace Tests\Helper;
 
 use Slim\App;
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Slim\Http\Environment;
+use PHPUnit\Framework\TestCase;
 
 /**
  * This is an example class that shows how you could set up a method that
@@ -13,8 +13,10 @@ use Slim\Http\Environment;
  * tuned to the specifics of this skeleton app, so if your needs are
  * different, you'll need to change it.
  */
-class BaseTestCase extends \PHPUnit_Framework_TestCase
+abstract class IntegrationTestCase extends TestCase implements InterfaceIntegration
 {
+    public $fixtures = [];
+    
     /**
      * Use middleware when running application?
      *
@@ -28,16 +30,17 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
      * @param string $requestMethod the request method (e.g. GET, POST, etc.)
      * @param string $requestUri the request URI
      * @param array|object|null $requestData the request data
+     * @param array|object|null $options
      * @return \Slim\Http\Response
      */
-    public function runApp($requestMethod, $requestUri, $requestData = null)
+    public function request(string $requestMethod, string $requestUri, array $requestData = null, array $options = []):Response
     {
         // Create a mock environment for testing with
         $environment = Environment::mock(
             [
                 'REQUEST_METHOD' => $requestMethod,
                 'REQUEST_URI' => $requestUri
-            ]
+            ] + $options
         );
 
         // Set up a request object based on the environment
@@ -52,21 +55,21 @@ class BaseTestCase extends \PHPUnit_Framework_TestCase
         $response = new Response();
 
         // Use the application settings
-        $settings = require __DIR__ . '/../../src/settings.php';
+        $settings = require APP_PATH . '/settings_test.php';
 
         // Instantiate the application
         $app = new App($settings);
 
         // Set up dependencies
-        require __DIR__ . '/../../src/dependencies.php';
+        require APP_PATH . '/dependencies.php';
 
         // Register middleware
         if ($this->withMiddleware) {
-            require __DIR__ . '/../../src/middleware.php';
+            require APP_PATH . '/middleware.php';
         }
 
         // Register routes
-        require __DIR__ . '/../../src/routes.php';
+        require APP_PATH . '/routes.php';
 
         // Process the application
         $response = $app->process($request, $response);
