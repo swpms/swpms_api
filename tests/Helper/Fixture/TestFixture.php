@@ -5,7 +5,7 @@ use Illuminate\Database\Capsule\Manager as Capsule;
 
 abstract class TestFixture{
     /**
-     * 
+     * @var type
      */
     protected $capsule;
 
