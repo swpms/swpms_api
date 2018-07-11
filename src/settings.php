@@ -15,5 +15,15 @@ return [
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+        "db"      => [
+            'driver'    => 'mysql',
+            'host'      => 'localhost',
+            'database'  => 'gomoku_api',
+            'username'  => 'root',
+            'password'  => '',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_general_ci',
+            'prefix'    => ''
+        ]
     ],
 ];
