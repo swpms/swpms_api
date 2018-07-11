@@ -18,7 +18,7 @@ return [
         "db"      => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => 'gomoku_api',
+            'database'  => 'swpms_api',
             'username'  => 'root',
             'password'  => '',
             'charset'   => 'utf8',
