@@ -3,10 +3,12 @@ namespace Tests\TestCase\Integration;
 
 use Tests\Helper\IntegrationTestCase;
 use Tests\Fixture\UserFixture;
+use Tests\Fixture\RoleFixture;
 
 class HomepageTest extends IntegrationTestCase
 {
     public $fixtures = [
+        RoleFixture::class,
         UserFixture::class
     ];
 

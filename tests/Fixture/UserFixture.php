@@ -32,7 +32,8 @@ class UserFixture extends TestFixture{
      */
     public function data():array{
         return [
-            [
+            0 => [
+                'id'        => '1',
                 'username'  => 'vkiet',
                 'password'  => '123',
                 'email'     => 'vkiet@gmail.com',

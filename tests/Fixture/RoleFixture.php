@@ -29,7 +29,8 @@ class RoleFixture extends TestFixture{
      */
     public function data():array{
         return [
-            [
+            0 => [
+                'id'            => '1',
                 'role'          => 'admin',
                 'description'   => 'Role is Admin'
             ]
