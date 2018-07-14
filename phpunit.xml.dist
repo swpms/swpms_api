@@ -17,4 +17,15 @@
             </arguments>
         </listener>
     </listeners>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./src/</directory>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
 </phpunit>
