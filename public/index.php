@@ -10,22 +10,22 @@ if (PHP_SAPI == 'cli-server') {
 }
 
 require __DIR__ . '/../vendor/autoload.php';
-require __DIR__ . '/../src/constants.php';
+require __DIR__ . '/../config/constants.php';
 
 session_start();
 
 // Instantiate the app
-$settings = require APP_PATH . '/src/settings.php';
+$settings = require CONFIG_PATH . '/settings.php';
 $app = new \Slim\App($settings);
 
 // Set up dependencies
-require APP_PATH . '/src/dependencies.php';
+require CONFIG_PATH . '/dependencies.php';
 
 // Register middleware
-require APP_PATH . '/src/middleware.php';
+require CONFIG_PATH . '/middleware.php';
 
 // Register routes
-require APP_PATH . '/src/routes.php';
+require CONFIG_PATH . '/routes.php';
 
 // Run app
 $app->run();
