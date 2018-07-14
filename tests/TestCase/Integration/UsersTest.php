@@ -37,7 +37,8 @@ class UsersTest extends IntegrationTestCase
     /**
      * test login
      */
-    public function testLoginOK(){
+    public function testLoginOK()
+    {
         $response = $this->request('POST', '/user/login', [
             'username' => 'vkiet',
             'password' => '123'
@@ -49,7 +50,8 @@ class UsersTest extends IntegrationTestCase
      /**
      * test login
      */
-    public function testLoginNG(){
+    public function testLoginNG()
+    {
         $response = $this->request('POST', '/user/login', [
             'username' => 'vkiet',
             'password' => '123v'

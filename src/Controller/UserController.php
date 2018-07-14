@@ -29,7 +29,8 @@ class UserController extends ApiController
      * @param array $args
      * @return Psr\Http\Message\ResponseInterface
      */
-    public function login(RequestInterface $req, ResponseInterface $res, array $args){
+    public function login(RequestInterface $req, ResponseInterface $res, array $args)
+    {
         $username = $req->getParam('username');
         $password = $req->getParam('password');
         
