@@ -25,6 +25,8 @@ return [
             'collation' => 'utf8_general_ci',
             'prefix'    => ''
         ],
-        
+        "security" => [
+            'secret'    => '^H-=a!"zBG7G%XZ>'
+        ]
     ],
 ];
