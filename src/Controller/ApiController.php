@@ -37,6 +37,6 @@ class ApiController
      */
     public function __get($id)
     {
-        return $this->ci->get($id);;
+        return $this->ci->get($id);
     }
 }
