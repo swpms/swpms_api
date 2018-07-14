@@ -3,7 +3,8 @@ namespace Api\Controller;
 
 use Psr\Container\ContainerInterface;
 
-class ApiController {
+class ApiController
+{
     /**
      * Slim App.
      *
@@ -29,18 +30,18 @@ class ApiController {
      */
     public function initialize()
     {
-        
     }
 
     /**
      * get data for self or container
      */
-    public function __get($id){
-        if(property_exists($this, $id)){
+    public function __get($id)
+    {
+        if (property_exists($this, $id)) {
             return $this->{$id};
         }
 
-        if($this->ci->has($id)){
+        if ($this->ci->has($id)) {
             return $this->ci->get($id);
         }
         return null;
