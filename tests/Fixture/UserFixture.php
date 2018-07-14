@@ -35,7 +35,7 @@ class UserFixture extends TestFixture{
             0 => [
                 'id'        => '1',
                 'username'  => 'vkiet',
-                'password'  => '123',
+                'password'  => md5('123'),
                 'email'     => 'vkiet@gmail.com',
                 'fullname'  => 'Anh Kiet',
                 'role_id'   => '1'

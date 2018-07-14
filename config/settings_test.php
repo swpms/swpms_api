@@ -20,5 +20,8 @@ return [
             'database' => TEST_PATH . '/db/testing.sqlite',
             'prefix'   => '',
         ],
+        "security" => [
+            'secret'    => '^H-=a!"zBG7G%XZ>'
+        ]
     ],
 ];
