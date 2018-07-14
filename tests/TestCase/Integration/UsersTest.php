@@ -23,7 +23,7 @@ class UsersTest extends IntegrationTestCase
             [
                 'id'        => '1',
                 'username'  => 'vkiet',
-                'password'  => '123',
+                'password'  => md5('123'),
                 'email'     => 'vkiet@gmail.com',
                 'fullname'  => 'Anh Kiet',
                 'role_id'   => '1'
@@ -31,5 +31,30 @@ class UsersTest extends IntegrationTestCase
         ];
 
         $this->assertEquals($expected, json_decode($response->getBody(), true));
+    }
+
+
+    /**
+     * test login
+     */
+    public function testLoginOK(){
+        $response = $this->request('POST', '/user/login', [
+            'username' => 'vkiet',
+            'password' => '123'
+        ]);
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertContains("OK", (string)$response->getBody());
+    }
+
+     /**
+     * test login
+     */
+    public function testLoginNG(){
+        $response = $this->request('POST', '/user/login', [
+            'username' => 'vkiet',
+            'password' => '123v'
+        ]);
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertContains("NG", (string)$response->getBody());
     }
 }

@@ -26,3 +26,8 @@ $container['db'] = function ($c) {
     $capsule->bootEloquent();
     return $capsule;
 };
+
+// Database connection
+$container['secret'] = function ($c) {
+    return $c['settings']['security']['secret'];
+};

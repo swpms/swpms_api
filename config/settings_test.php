@@ -20,5 +20,8 @@ return [
             'database' => __DIR__ . '/../db/testing.sqlite',
             'prefix'   => '',
         ],
+        "security" => [
+            'secret'    => '^H-=a!"zBG7G%XZ>'
+        ]
     ],
 ];
