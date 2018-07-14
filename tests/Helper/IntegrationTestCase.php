@@ -55,21 +55,21 @@ abstract class IntegrationTestCase extends TestCase implements InterfaceIntegrat
         $response = new Response();
 
         // Use the application settings
-        $settings = require APP_PATH . '/settings_test.php';
+        $settings = require CONFIG_PATH . '/settings_test.php';
 
         // Instantiate the application
         $app = new App($settings);
 
         // Set up dependencies
-        require APP_PATH . '/dependencies.php';
+        require CONFIG_PATH . '/dependencies.php';
 
         // Register middleware
         if ($this->withMiddleware) {
-            require APP_PATH . '/middleware.php';
+            require CONFIG_PATH . '/middleware.php';
         }
 
         // Register routes
-        require APP_PATH . '/routes.php';
+        require CONFIG_PATH . '/routes.php';
 
         // Process the application
         $response = $app->process($request, $response);
