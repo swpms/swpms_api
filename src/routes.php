@@ -6,10 +6,10 @@ use Slim\Http\Response;
 // Routes
 $app->get('/user/login', function (Request $request, Response $response, array $args) {
     // Sample log message
-    if($request->is('post')){
+    if ($request->is('post')) {
         $username = $request->getParam('username');
         $password = $request->getParam('password');
-        if($dbUser->exists($username, $passowrd)){
+        if ($dbUser->exists($username, $passowrd)) {
             $payload = [
                 'iss' => 'swpms.api',
                 'expt' => strtitime('+2 hours'),
@@ -33,4 +33,3 @@ $app->get('/api/v1/users', function (Request $request, Response $response, array
     $users = $this->db->table('users')->get();
     return $response->withJson($users);
 });
-
