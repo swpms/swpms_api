@@ -20,7 +20,9 @@
 
     <filter>
         <whitelist>
-            <directory suffix=".php">./src/</directory>
+            <file>./src/dependencies.php</file>
+            <file>./src/middleware.php</file>
+            <file>./src/routes.php</file>
         </whitelist>
     </filter>
 
