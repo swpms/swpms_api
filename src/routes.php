@@ -28,3 +28,9 @@ $app->get('/user/login', function (Request $request, Response $response, array $
     // Render index view
     return $this->withJson(['status' => 'NG', 'token' => '']);
 });
+
+$app->get('/api/v1/users', function (Request $request, Response $response, array $args) {
+    $users = $this->db->table('users')->get();
+    return $response->withJson($users);
+});
+

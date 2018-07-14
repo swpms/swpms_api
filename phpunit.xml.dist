@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phpunit
+    colors="true"
+    bootstrap="./tests/bootstrap.php">
+    <testsuites>
+        <testsuite name="SlimIntegration">
+            <directory suffix="Test.php">./tests/TestCase/Integration</directory>
+        </testsuite>
+    </testsuites>
+    
+    <listeners>
+        <listener
+            class="\Tests\Helper\Fixture\FixtureInjector"
+            file="tests/Helper/Fixture/FixtureInjector.php">
+            <arguments>
+                <object class="\Tests\Helper\Fixture\FixtureManager"/>
+            </arguments>
+        </listener>
+    </listeners>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">./src/</directory>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
+        <log type="coverage-clover" target="clover.xml"/>
+    </logging>
+</phpunit>
