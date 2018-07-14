@@ -4,7 +4,8 @@ namespace Api\Controller;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-class UserController extends ApiController{
+class UserController extends ApiController
+{
     /**
      * get list users
      *
@@ -13,7 +14,8 @@ class UserController extends ApiController{
      * @param array $args
      * @return Psr\Http\Message\ResponseInterface
      */
-    public function list(RequestInterface $req, ResponseInterface $res, array $args){
+    public function list(RequestInterface $req, ResponseInterface $res, array $args)
+    {
         $users = $this->db->table('users')->get();
         return $res->withJson($users);
     }

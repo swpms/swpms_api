@@ -16,13 +16,14 @@ abstract class TestFixture{
     public $table;
 
     /**
-     * 
+     *
      */
-    public function __construct(){
+    public function __construct()
+    {
         // Use the application settings
         $settings = require CONFIG_PATH . '/settings_test.php';
         $fileName = $settings['settings']['db']['database'];
-        if($fileName != ':memory:' && !file_exists($fileName)){
+        if ($fileName != ':memory:' && !file_exists($fileName)) {
             touch($fileName);
         }
         
