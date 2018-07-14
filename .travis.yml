@@ -8,6 +8,9 @@ dist: trusty
 before_script:
  - composer install --prefer-dist --no-interaction
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
 notifications:
   email: false
   
