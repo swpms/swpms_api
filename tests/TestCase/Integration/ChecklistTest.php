@@ -27,4 +27,3 @@ class UsersChecklistTestTest extends IntegrationTestCase
         $this->assertEquals(2, count($body->data));
     }
 }
-

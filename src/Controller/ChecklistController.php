@@ -27,7 +27,7 @@ class ChecklistController extends ApiController
         $filterQuery = clone $totalQuery;
 
         // for search
-        if($keyword){
+        if ($keyword) {
             $filterQuery->orWhere('title', 'LIKE', "%{$keyword}%")
                 ->orWhere('description', 'LIKE', "%{$keyword}%");
         }

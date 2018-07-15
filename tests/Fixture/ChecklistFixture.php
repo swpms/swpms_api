@@ -4,7 +4,8 @@ namespace Tests\Fixture;
 use Tests\Helper\Fixture\TestFixture;
 use Illuminate\Database\Schema\Blueprint as Table;
 
-class ChecklistFixture extends TestFixture{
+class ChecklistFixture extends TestFixture
+{
     /**
      * table = users
      */
@@ -16,7 +17,7 @@ class ChecklistFixture extends TestFixture{
      */
     public function create():void
     {
-        $this->schema()->create($this->table, function(Table $table) {
+        $this->schema()->create($this->table, function (Table $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('description');
@@ -29,7 +30,8 @@ class ChecklistFixture extends TestFixture{
      * [create description]
      * @return [type] [description]
      */
-    public function data():array{
+    public function data():array
+    {
         return [
             0 => [
                 'id'            => '1',
@@ -54,5 +56,4 @@ class ChecklistFixture extends TestFixture{
             ]
         ];
     }
-
 }
