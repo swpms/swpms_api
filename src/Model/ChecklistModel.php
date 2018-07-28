@@ -3,7 +3,8 @@ namespace Api\Model;
 
 use Illuminate\Database\Capsule\Manager;
 
-class ChecklistModel{
+class ChecklistModel
+{
     protected $db;
     protected $table = 'checklists';
 
@@ -13,10 +14,11 @@ class ChecklistModel{
     }
 
     /**
-     * 
+     *
      */
-    public function pagination($settings = []){
-        extract( $settings+ [
+    public function pagination($settings = [])
+    {
+        extract($settings+ [
             'start' => 1,
             'limit' => 50,
             'order' => 'created',

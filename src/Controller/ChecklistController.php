@@ -33,7 +33,7 @@ class ChecklistController extends ApiController
     public function list(RequestInterface $req, ResponseInterface $res, array $args)
     {
         $result = null;
-        try{
+        try {
             $start    = $req->getParam('start', 1);
             $limit    = $req->getParam('limit', 50);
             $order    = $req->getParam('order', 'created');
@@ -45,7 +45,7 @@ class ChecklistController extends ApiController
                 'dir' => $dir,
                 'kw' => $kw
             ]);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             return $res->withStatus(500)
                 ->withJson([
                     'error' => [
