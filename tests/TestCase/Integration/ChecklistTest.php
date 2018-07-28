@@ -3,6 +3,9 @@ namespace Tests\TestCase\Integration;
 
 use Tests\Helper\IntegrationTestCase;
 use Tests\Fixture\ChecklistFixture;
+use Psr\Http\Message\RequestInterface;
+use GuzzleHttp\{Client, HandlerStack};
+use GuzzleHttp\Psr7\{Request, Response};
 
 class UsersChecklistTestTest extends IntegrationTestCase
 {

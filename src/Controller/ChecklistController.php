@@ -3,9 +3,25 @@ namespace Api\Controller;
 
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
+use Api\Model\ChecklistModel;
 
 class ChecklistController extends ApiController
 {
+    /**
+     * @var Api\Model\ChecklistModel
+     */
+    protected $model;
+
+    /**
+     * [init description].
+     *
+     * @return [type] [description]
+     */
+    public function initialize()
+    {
+        $this->model = new ChecklistModel($this->db);
+    }
+
     /**
      * get list users
      *
@@ -16,30 +32,29 @@ class ChecklistController extends ApiController
      */
     public function list(RequestInterface $req, ResponseInterface $res, array $args)
     {
-        $start    = $req->getParam('start', 1);
-        $limit    = $req->getParam('limit', 50);
-        $order    = $req->getParam('order', 'created');
-        $dir      = $req->getParam('dir', 'desc');
-        $keyword  = $req->getParam('kw', null);
-
-        // create default query
-        $totalQuery = $this->db->table('checklists');
-        $filterQuery = clone $totalQuery;
-
-        // for search
-        if($keyword){
-            $filterQuery->orWhere('title', 'LIKE', "%{$keyword}%")
-                ->orWhere('description', 'LIKE', "%{$keyword}%");
+        $result = null;
+        try{
+            $start    = $req->getParam('start', 1);
+            $limit    = $req->getParam('limit', 50);
+            $order    = $req->getParam('order', 'created');
+            $dir      = $req->getParam('dir', 'desc');
+            $kw       = $req->getParam('kw', null);
+            $result = $this->model->pagination([
+                'limit' => $limit,
+                'order' => $order,
+                'dir' => $dir,
+                'kw' => $kw
+            ]);
+        }catch(\Exception $e){
+            return $res->withStatus(500)
+                ->withJson([
+                    'error' => [
+                        'messsage' => 'Error system.',
+                        'code'     => $e->getCode()
+                    ]
+                ]);
         }
 
-        $filterQuery->offset($start - 1)
-            ->limit($limit)
-            ->orderBy($order, $dir);
-
-        return $res->withJson([
-            'recordsTotal'      => $totalQuery->count(),
-            'recordsFiltered'   => $filterQuery->count(),
-            'data'              => $filterQuery->get()
-        ]);
+        return $res->withJson($result);
     }
 }
