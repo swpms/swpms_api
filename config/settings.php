@@ -18,13 +18,15 @@ return [
         "db"      => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => 'swpms_api',
+            'database'  => 'slim_swpms_api',
             'username'  => 'root',
             'password'  => '',
             'charset'   => 'utf8',
             'collation' => 'utf8_general_ci',
             'prefix'    => ''
         ],
-        
+        "security" => [
+            'secret'    => '^H-=a!"zBG7G%XZ>'
+        ]
     ],
 ];
